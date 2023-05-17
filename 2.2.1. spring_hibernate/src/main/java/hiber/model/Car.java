@@ -10,11 +10,12 @@ import java.io.Serializable;
 public class Car {
 
     @Id
-    @Column(name = "cars_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int carsId;
+    @Column(name = "cars_id")
+    private Long carsId;
 
     @OneToOne(mappedBy = "car", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
     private User user;
 
     @Column(name = "model")
@@ -55,18 +56,18 @@ public class Car {
         this.series = series;
     }
 
-    public int getCarsId() {
+    public Long getCarsId() {
         return carsId;
     }
 
-    public void setCarsId(int carsId) {
+    public void setCarsId(Long carsId) {
         this.carsId = carsId;
     }
 
     @Override
     public String toString() {
         return "Car{" +
-                ", model='" + model + '\'' +
+                "model='" + model + '\'' +
                 ", series=" + series +
                 '}';
     }

@@ -7,11 +7,11 @@ import javax.persistence.*;
 public class User {
 
    @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Long id;
 
-   @OneToOne(cascade = CascadeType.ALL)
-   @JoinColumn(name = "cars_identifikator")
+   @OneToOne
+   @MapsId
+   @JoinColumn(name = "id")
    private Car car;
 
    @Column(name = "name")
